@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <style>
+     
+        body {
+            background-color: #000000; /* Violeta oscuro */
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #4B0082; /* Violeta más claro */
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            background-color: #FFFFFF; /* Fondo blanco */
+            color: #000000; /* Texto negro */
+            padding: 10px 20px;
+            border-radius: 5px; /* Agregamos bordes redondeados para que se vea mejor */
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        section {
+            margin: 20px;
+            padding: 20px;
+            background-color: #4B0082; /* Violeta más claro */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        button[type="submit"] {
+            background-color: #FFFFFF; /* Fondo blanco */
+            color: #000000; /* Texto violeta */
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+      
+        #contacto-adicional {
+            background-color: #4B0082; /* Violeta más claro */
+            padding: 20px;
+            text-align: center;
+        }
+
+        #contacto-adicional ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #contacto-adicional ul li {
+            margin-bottom: 10px;
+        }
+
+        #contacto-adicional ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #2E0854; /* Violeta oscuro */
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'Portada' %}">Inicio</a></li>
+                <li><a href="{% url 'Productos' %}">Productos</a></li>
+                <li><a href="{% url 'Login' %}">Inicio de Sesion</a></li>
+
+            </ul>
+        </nav>
+        <h1>Contacto</h1>
+    </header>
+    
+    <main>
+        <!-- Formulario de Contacto -->
+        <section id="formulario-contacto">
+            <h2>Formulario de Contacto</h2>
+            <form action="procesar.php" method="post"> 
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                
+                <label for="correo">Correo Electronico:</label>
+                <input type="email" id="correo" name="correo" required>
+                
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" required></textarea>
+                
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+        
+        <!-- Información de Contacto Adicional -->
+        <section id="contacto-adicional">
+            <h2>Otras Formas de Contacto</h2>
+            <ul>
+                <li><a href="mailto:info@tupagina.com">Enviar Correo Electronico</a></li>
+                <li><a href="https://wa.me/telefono">Enviar WhatsApp</a></li> 
+                <li><a href="https://www.instagram.com/tupagina/">Visitar Instagram</a></li> 
+                <li><a href="tel:+123456789">Llamar por Telefono</a></li> 
+            </ul>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2023 Tienda de Componentes de PC</p>
+    </footer>
+</body>
+</html>

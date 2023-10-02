@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Componentes de PC</title>
+  
+    <style>
+
+        body {
+            background-color: #000000; /* Violeta oscuro */
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #4B0082; /* Violeta más claro */
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            background-color: #FFFFFF; /* Fondo blanco */
+            color: #000000; /* Texto negro */
+            padding: 10px 20px;
+            border-radius: 5px; /* Agregamos bordes redondeados para que se vea mejor */
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        section#destacados {
+            margin: 20px;
+            padding: 20px;
+            background-color: #4B0082; /* Violeta más claro */
+        }
+
+        .producto {
+            background-color: #2E0854; /* Violeta oscuro */
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .producto h3 {
+            color: white;
+        }
+
+        .producto p {
+            color: white;
+            margin: 5px 0;
+        }
+
+        section#categorias {
+            margin: 20px;
+            padding: 20px;
+            background-color: #4B0082; /* Violeta más claro */
+        }
+
+        #categorias ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #categorias ul li {
+            margin-bottom: 10px;
+        }
+
+        #categorias ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #2E0854; /* Violeta oscuro */
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'Productos' %}">Productos</a></li>
+                <li><a href="{% url 'Carrito' %}">Carrito</a></li>
+                <li><a href="{% url 'Contacto' %}">Contacto</a></li>
+                <li><a href="{% url 'Login' %}">Inicio de Sesion</a></li>
+
+            </ul>
+        </nav>
+        <h1>Bienvenido a la Tienda de Componentes de PC</h1>
+    </header>
+    
+    <main>
+        <section id="destacados">
+            <h2>Productos Destacados</h2>
+            <!-- Aquí puedes listar los productos destacados -->
+            <div class="producto">
+                <h3>Producto 1</h3>
+                <p>Descripcion del producto 1.</p>
+                <p>Precio: $XX.XX</p>
+            </div>
+
+            <div class="producto">
+                <h3>Producto 2</h3>
+                <p>Descripcion del producto 2.</p>
+                <p>Precio: $XX.XX</p>
+            </div>
+
+            <div class="producto">
+                <h3>Producto 3</h3>
+                <p>Descripcion del producto 3.</p>
+                <p>Precio: $XX.XX</p>
+            </div>
+        </section>
+        
+        <section id="categorias">
+            <h2>Categorias de Productos</h2>
+            <!-- Lista de categorías -->
+            <ul>
+                <li><a href="#">Procesadores</a></li>
+                <li><a href="#">Tarjetas Graficas</a></li>
+                <li><a href="#">Memorias RAM</a></li>
+                <li><a href="#">Almacenamiento</a></li>
+                <li><a href="#">Perifericos</a></li>
+            </ul>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2023 Tienda de Componentes de PC</p>
+    </footer>
+</body>
+</html>

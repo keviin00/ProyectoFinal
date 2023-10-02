@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto Agregado</title>
+    <style>
+body {
+    background-color: #5f003e;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+        .message-box {
+            background-color: #000000;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #ffffff;
+        }
+
+        .add-button {
+            background-color: #002fff;
+        }
+
+        .home-button {
+            background-color: #002fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="message-box">
+        ¡Producto Agregado Correctamente!
+    </div>
+    <div class="product-info">
+    </div>
+
+    <!-- Agregar un botón para agregar más productos -->
+    <a href="{% url 'formulario_procesador' %}" class="button add-button">Agregar Más Procesadores</a>
+    <a href="{% url 'formulario_fuente' %}" class="button add-button">Agregar Más Fuentes</a>
+    <a href="{% url 'formulario_memoria' %}" class="button add-button">Agregar Más Memoria</a>
+    <a href="{% url 'formulario_motherboard' %}" class="button add-button">Agregar Más Motherboard</a>
+   
+
+    <!-- Agregar un botón para ir al inicio -->
+    <a href="{% url 'Portada' %}" class="button home-button">Ir al Inicio</a>
+</body>
+
+</html>

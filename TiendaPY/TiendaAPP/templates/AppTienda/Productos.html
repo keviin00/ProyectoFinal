@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Productos de Componentes de PC</title>
+    <style>
+       
+        body {
+            background-color: #000000; /* Violeta oscuro */
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #4B0082; /* Violeta más claro */
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            background-color: #FFFFFF; /* Fondo blanco */
+            color: #000000; /* Texto negro */
+            padding: 10px 20px;
+            border-radius: 5px; /* Agregamos bordes redondeados para que se vea mejor */
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        section {
+            margin: 20px;
+            padding: 20px;
+            background-color: #4B0082; /* Violeta más claro */
+        }
+
+        .producto {
+            background-color: #2E0854; /* Violeta oscuro */
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .producto h3 {
+            color: white;
+        }
+
+        .producto p {
+            color: white;
+            margin: 5px 0;
+        }
+
+        footer {
+            background-color: #2E0854; /* Violeta oscuro */
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'Portada' %}">Inicio</a></li>
+                <li><a href="{% url 'Carrito' %}">Carrito</a></li>
+                <li><a href="{% url 'Contacto' %}">Contacto</a></li>
+                <li><a href="{% url 'Login' %}">Inicio de Sesion</a></li>
+
+            </ul>
+        </nav>
+        <h1>Productos de Componentes de PC</h1>
+    </header>
+    
+    <main>
+        <!-- Categoría: Procesadores -->
+        <section id="procesadores">
+            <h2>Procesadores</h2>
+            <!-- Lista de productos de procesadores -->
+            <div class="producto">
+                <h3>Procesador 1</h3>
+                <p>Descripci&oacute;n del procesador 1.</p>
+                <p>Precio: $XX.XX</p>
+                <p>modelo</p>
+            </div>
+         
+        </section>
+        
+        <!-- Categoría: Memorias -->
+        <section id="memorias">
+            <h2>Memorias</h2>
+            <!-- Lista de productos de memorias -->
+            <div class="producto">
+                <h3>marca</h3>
+                <p>Descripci&oacute;n de la memoria 1.</p>
+                <p>Precio: $XX.XX</p>
+                <p>modelo</p>
+            </div>
+          
+        </section>
+        
+        <!-- Categoría: Motherboards -->
+        <section id="motherboards">
+            <h2>Motherboards</h2>
+            <!-- Lista de productos de motherboards -->
+            <div class="producto">
+                <h3>Motherboard 1</h3>
+                <p>Descripci&oacute;n del motherboard 1.</p>
+                <p>Precio: $XX.XX</p>
+                <p>modelo</p>
+            </div>
+           
+        </section>
+        
+        <!-- Categoría: Fuentes de Poder -->
+        <section id="fuentes">
+            <h2>Fuentes de Poder</h2>
+            <!-- Lista de productos de fuentes de poder -->
+            <div class="producto">
+                <h3>Fuente de Poder 1</h3>
+                <p>Descripci&oacute;n de la fuente de poder 1.</p>
+                <p>Precio: $XX.XX</p>
+                <p>modelo</p>
+            </div>
+           
+        </section>
+        
+        <!-- Categoría: Discos -->
+        <section id="discos">
+            <h2>Discos</h2>
+            <!-- Lista de productos de discos -->
+            <div class="producto">
+                <h3>Disco 1</h3>
+                <p>Descripci&oacute;n del disco 1.</p>
+                <p>Precio: $XX.XX</p>
+                <p>modelo</p>
+            </div>
+          
+        </section>
+        
+        <!-- Categoría: Periféricos -->
+        <section id="perifericos">
+            <h2>Perif&eacute;ricos</h2>
+            <!-- Lista de productos de periféricos -->
+            <div class="producto">
+                <h3>Perif&eacute;rico 1</h3>
+                <p>Descripci&oacute;n del perif&eacute;rico 1.</p>
+                <p>Precio: $XX.XX</p>
+                <p>modelo</p>
+            </div>
+      
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2023 Tienda de Componentes de PC</p>
+    </footer>
+</body>
+</html>

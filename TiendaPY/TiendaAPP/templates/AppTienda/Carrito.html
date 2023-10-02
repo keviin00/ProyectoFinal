@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <style>
+
+        body {
+            background-color: #000000; /* Violeta oscuro */
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #4B0082; /* Violeta más claro */
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            background-color: #FFFFFF; /* Fondo blanco */
+            color: #000000; /* Texto negro */
+            padding: 10px 20px;
+            border-radius: 5px; /* Agregamos bordes redondeados para que se vea mejor */
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        section#carrito {
+            margin: 20px;
+            padding: 20px;
+            background-color: #4B0082; /* Violeta más claro */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th,
+        table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #FFFFFF; /* Borde blanco */
+        }
+
+        table th {
+            background-color: #2E0854; /* Violeta oscuro */
+            color: white;
+        }
+
+        /* Estilos para el resumen del carrito */
+        #resumen {
+            background-color: #2E0854; /* Violeta oscuro */
+            color: white;
+            padding: 10px;
+            text-align: right;
+        }
+
+        footer {
+            background-color: #2E0854; /* Violeta oscuro */
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'Portada' %}">Inicio</a></li>
+                <li><a href="{% url 'Productos' %}">Productos</a></li>
+                <li><a href="{% url 'Contacto' %}">Contacto</a></li>
+                <li><a href="{% url 'Login' %}">Inicio de Sesion</a></li>
+            </ul>
+        </nav>
+        <h1>Carrito de Compras</h1>
+    </header>
+    
+    <main>
+        <!-- Carrito de Compras -->
+        <section id="carrito">
+            <h2>Tu Carrito de Compras</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Precio Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Producto 1 -->
+                    <tr>
+                        <td>Producto 1</td>
+                        <td>2</td>
+                        <td>$XX.XX</td>
+                        <td>$XX.XX</td>
+                    </tr>
+                    <!-- Producto 2 -->
+                    <tr>
+                        <td>Producto 2</td>
+                        <td>1</td>
+                        <td>$XX.XX</td>
+                        <td>$XX.XX</td>
+                    </tr>
+                    <tr>
+                        <td>Producto 3</td>
+                        <td>1</td>
+                        <td>$XX.XX</td>
+                        <td>$XX.XX</td>
+                    </tr>
+               
+                </tbody>
+            </table>
+            
+            <!-- Resumen del Carrito -->
+            <div id="resumen">
+                <p>Total de Productos: 3</p>
+                <p>Precio Final: $XX.XX</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2023 Tienda de Componentes de PC</p>
+    </footer>
+</body>
+</html>

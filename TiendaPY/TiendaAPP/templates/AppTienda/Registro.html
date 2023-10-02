@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #4B0082;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            background-color: #FFFFFF;
+            color: #000000;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            width: 100%;
+            background-color: #4B0082;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        form input[type="text"],
+        form input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        form button[type="submit"] {
+            background-color: #FFFFFF;
+            color: #000000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #2E0854;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .button {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #2E0854;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Registro</h1>
+    </header>
+
+    <main>
+        <form method="post" action="{% url 'Registro' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Registrarse</button>
+        </form>
+    </main>
+
+
+    <footer>
+        <p>&copy; 2023 Tienda de Componentes de PC</p>
+    </footer>
+</body>
+
+</html>
