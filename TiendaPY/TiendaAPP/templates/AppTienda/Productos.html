@@ -3,25 +3,34 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <title>Productos de Componentes de PC</title>
+    <title>Componentes de PC</title>
 
     <style>
+        * {
+    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total del elemento */
+}
         /* Estilos para el cuerpo, el encabezado y la barra de navegación */
         body {
-            background-color: #000000;
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+    background-image: url('https://images6.alphacoders.com/133/1330647.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Fija el fondo en su posición original */
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 
         header {
-            background-color: #4B0082;
+            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg'); /* Reemplaza 'ruta/a/tu/imagen.jpg' con la ruta de tu imagen de fondo */
+    background-size: cover; /* Esto asegurará que la imagen cubra todo el fondo */
+    background-repeat: no-repeat;
             padding: 20px;
             text-align: center;
         }
@@ -39,8 +48,8 @@
         nav ul li a {
             text-decoration: none;
             color: white;
-            background-color: #FFFFFF;
-            color: #000000;
+            background-color: #2E0854;
+            color: #ffffff;
             padding: 10px 20px;
             border-radius: 5px;
         }
@@ -59,16 +68,16 @@
     overflow: hidden;
     transition: max-height 0.3s ease-out;
     margin-bottom: 0;
-    background-color: #2E0854; /* Violeta oscuro */
-    color: white; /* Color de texto blanco */
+    background-color: #000000;
+            color: white;/*  /* Color de texto blanco */
 }
 
 .seccion-desplegada {
     max-height: 1000px;
     transition: max-height 0.5s ease-in;
     margin-bottom: 20px;
-    background-color: #2E0854; /* Violeta oscuro */
-    color: white; /* Color de texto blanco */
+    background-color: #000000;
+            color: white;/* Color de texto blanco */
 }
         /* Estilos para los botones de toggle */
         .toggle-button {
@@ -86,7 +95,9 @@
             background-color: #4B0082;
         }
         footer {
-    background-color: #4B0082; /* Violeta más claro */
+            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg'); /* Reemplaza 'ruta/a/tu/imagen.jpg' con la ruta de tu imagen de fondo */
+    background-size: cover; /* Esto asegurará que la imagen cubra todo el fondo */
+    background-repeat: no-repeat;
     padding: 20px;
     text-align: center;
     color: white; /* Color de texto blanco */
@@ -104,7 +115,7 @@
                 <li><a href="{% url 'Login' %}">Inicio de Sesion</a></li>
             </ul>
         </nav>
-        <h1>Productos de Componentes de PC</h1>
+        <h1>Componentes de PC</h1>
     </header>
 
     <main>
@@ -118,7 +129,7 @@
                 <p>Precio: ${{ procesador.precio }}</p>
                 <p>Modelo: {{ procesador.modelo }}</p>
                 <p>Stock: {{ procesador.stock }}</p>
-                <button onclick="agregarAlCarrito('{{ procesador.marca }}')">Agregar al carrito</button>
+               
 
             </div>
             {% empty %}

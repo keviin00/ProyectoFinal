@@ -17,7 +17,7 @@ def Carrito(request):
 
 def Contacto(request):
     miHTML = open(
-        r"C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Contacto.html")
+        r"C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Contacto.html")
     plantilla = Template(miHTML.read())
     miHTML.close()
     Context1 = Context()
@@ -26,7 +26,7 @@ def Contacto(request):
 
 def Portada(request):
     miHTML = open(
-        r"C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Portada.html")
+        r"C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Portada.html")
     plantilla = Template(miHTML.read())
     miHTML.close()
     Context1 = Context()
@@ -41,7 +41,7 @@ def Productos(request):
     perifericos = Periferico.objects.all()  
     discos = Disco.objects.all() 
 
-    return render(request, r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Productos.html', {
+    return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Productos.html', {
         'procesadores': procesadores,
         'memorias': memorias,
         'fuentes': fuentes,
@@ -53,7 +53,7 @@ def Productos(request):
 
 def Login(request):
     miHTML = open(
-        r"C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Login.html")
+        r"C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Login.html")
     plantilla = Template(miHTML.read())
     miHTML.close()
     Context1 = Context()
@@ -66,15 +66,15 @@ def Registro(request):
         if form.is_valid():
             form.save()
 
-            return redirect(r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Portada.html')
+            return redirect(r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Portada.html')
     else:
         form = RegistroForm()
-    return render(request, r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Registro.html', {'form': form})
+    return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Registro.html', {'form': form})
 
 
 def RecuperarPass(request):
     miHTML = open(
-        r"C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\RecuperarPass.html")
+        r"C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\RecuperarPass.html")
     plantilla = Template(miHTML.read())
     miHTML.close()
     Context1 = Context()
@@ -95,9 +95,9 @@ def agregar_procesador(request):
         procesador.save()
 
         # Puedes redirigir a otra página o mostrar un mensaje de éxito
-        return render(request, r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\exito.html')
+        return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\exito.html')
 
-    return render(request, r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\formulario_procesador.html')
+    return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\formulario_procesador.html')
 
 
 def agregar_fuente(request):
@@ -112,9 +112,9 @@ def agregar_fuente(request):
                         descripcion=descripcion, precio=precio, stock=stock)
         fuente.save()
 
-        return render(request, r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\exito.html')
+        return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\exito.html')
 
-    return render(request, r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\formulario_fuente.html')
+    return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\formulario_fuente.html')
 
 
 def agregar_memoria(request):
@@ -129,9 +129,9 @@ def agregar_memoria(request):
                           descripcion=descripcion, precio=precio, stock=stock)
         memoria.save()
 
-        return render(request, r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\exito.html')
+        return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\exito.html')
 
-    return render(request, r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\formulario_memoria.html')
+    return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\formulario_memoria.html')
 
 
 def agregar_motherboard(request):
@@ -146,9 +146,9 @@ def agregar_motherboard(request):
             modelo=modelo, marca=marca, descripcion=descripcion, precio=precio, stock=stock)
         motherboard.save()
 
-        return render(request, r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\exito.html')
+        return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\exito.html')
 
-    return render(request, r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\formulario_motherboard.html')
+    return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\formulario_motherboard.html')
 
 
 def agregar_periferico(request):
@@ -163,9 +163,9 @@ def agregar_periferico(request):
             marca=marca, descripcion=descripcion, precio=precio, modelo=modelo, stock=stock)
         periferico.save()
 
-        return render(request, r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\exito.html')
+        return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\exito.html')
 
-    return render(request, r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\formulario_periferico.html')
+    return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\formulario_periferico.html')
 
 from .models import Disco  # Asegúrate de importar el modelo Disco
 
@@ -181,9 +181,9 @@ def agregar_disco(request):
         disco.save()
 
         # Redirigir a una página de éxito o a donde desees después de agregar el disco
-        return HttpResponseRedirect( r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\exito.html')
+        return HttpResponseRedirect( r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\exito.html')
     
     # Si el método de solicitud no es POST, renderizar el formulario
-    return render(request, r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\formulario_discos.html')
+    return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\formulario_discos.html')
 
 

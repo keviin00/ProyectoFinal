@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
     <style>
-       body {
-    background-color: #000000;
+body {
+    background-image: url('https://images6.alphacoders.com/133/1330647.jpeg');
+        background-size: cover;
+        background-repeat: no-repeat;
     color: white;
     font-family: Arial, sans-serif;
     margin: 0;
@@ -18,7 +20,9 @@
 }
 
 header {
-    background-color: #4B0082;
+    background-image: url('https://images6.alphacoders.com/133/1330647.jpeg');
+        background-size: cover;
+        background-repeat: no-repeat;
     padding: 20px;
     text-align: center;
 }
@@ -36,8 +40,8 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
     color: white;
-    background-color: #FFFFFF;
-    color: #000000;
+    background-color: #2E0854;
+    color: #ffffff;
     padding: 10px 20px;
     border-radius: 5px;
 }
@@ -62,34 +66,26 @@ form {
 
 form label {
     display: block;
-    text-align: left;
+    text-align: center;
     margin-bottom: 5px;
-    color: white; 
+    color: white;
 }
 
 form input[type="text"],
-form input[type="password"] {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 20px;
-    border: none;
-    border-radius: 5px;
-    color: black; /* Cambio de color del texto dentro del input */
-}
-
+form input[type="password"],
 form input[type="email"] {
-    width: calc(100% - 20px);
+    width: calc(100% - 40px);
     padding: 10px;
     margin-bottom: 20px;
     border: none;
     border-radius: 5px;
-    color: black; /* Cambio de color del texto dentro del input */
+    color: black;
+    background-color: #FFFFFF;
 }
-
 
 form button[type="submit"] {
-    background-color: #FFFFFF;
-    color: #000000;
+    background-color: #2E0854;
+    color: #ffffff;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -97,26 +93,30 @@ form button[type="submit"] {
 }
 
 footer {
-    background-color: #2E0854;
+            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg'); 
+    background-size: cover; /* Esto asegurará que la imagen cubra todo el fondo */
+    background-repeat: no-repeat;
     padding: 20px;
     text-align: center;
+    color: white; /* Color de texto blanco */
 }
-
 .button {
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    margin-top: 10px;
-}
-
-.button:hover {
     background-color: #2E0854;
-}
+    color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+
+
+        .button:hover {
+            background-color: #2E0854;
+        }
 
     </style>
 </head>
@@ -139,7 +139,10 @@ footer {
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Registrarse</button>
+            <a href="{% url 'Login' %}"class="button" >Login</a>
+
         </form>
+        
     </main>
 
 

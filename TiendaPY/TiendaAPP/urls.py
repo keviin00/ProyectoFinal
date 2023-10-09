@@ -17,5 +17,7 @@ urlpatterns = [
     path('Agregar_motherboard/', views.agregar_motherboard, name='formulario_motherboard'),
     path('Agregar_MemoriaRam/', views.agregar_memoria, name='formulario_memoria'),
     path('Agregar_Perifericos/', views.agregar_periferico, name='formulario_periferico'),
-    path('Agregar_Discos/', views.agregar_disco, name='formulario_discos'),       
+    path('Agregar_Discos/', views.agregar_disco, name='formulario_discos'),    
+     
+   
 ]
