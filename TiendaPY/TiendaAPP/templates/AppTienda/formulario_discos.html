@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Producto</title>
+    <title>Agregar Disco</title>
     <style>
         /* Tu CSS aquí */
         body {
@@ -119,11 +119,11 @@
                 <li><a href="{% url 'Productos' %}">Productos</a></li>
             </ul>
         </nav>
-        <h1>Agregar Motherboard</h1>
+        <h1>Agregar Disco</h1>
     </header>
 
     <main>
-        <form method="post" action="{% url 'formulario_motherboard' %}">
+        <form method="post" action="{% url 'formulario_discos' %}">
             {% csrf_token %}
             <label for="modelo">Modelo:</label>
             <input type="text" id="modelo" name="modelo" required>
@@ -132,7 +132,7 @@
             <input type="text" id="marca" name="marca" required>
 
             <label for="descripcion">Descripción:</label>
-            <textarea id="descripcion" name="descripcion" ></textarea>
+            <textarea id="descripcion" name="descripcion"></textarea>
 
             <label for="precio">Precio:</label>
             <input type="text" id="precio" name="precio" required>
@@ -140,18 +140,17 @@
             <label for="stock">Stock:</label>
             <input type="number" id="stock" name="stock" required>
 
-            <button type="submit">Agregar Motherboard</button>
+            <button type="submit">Agregar Disco</button>
         </form>
 
-
-
-        <!-- Enlace para ir a la página de inicio -->
+        
         <a href="{% url 'Portada' %}" class="button">Ir al Inicio</a>
         <a href="{% url 'formulario_fuente' %}" class="button add-button">Agregar Fuentes</a>
-        <a href="{% url 'formulario_procesador' %}" class="button add-button">Agregar Procesadores</a>
+        <a href="{% url 'formulario_motherboard' %}" class="button add-button">Agregar Motherboard</a>
         <a href="{% url 'formulario_memoria' %}" class="button add-button">Agregar Memoria</a>
-        <a href="{% url 'formulario_discos' %}" class="button add-button">Agregar Discos</a>
+        <a href="{% url 'formulario_procesador' %}" class="button add-button">Agregar Procesadores</a>
         <a href="{% url 'formulario_periferico' %}" class="button add-button">Agregar Perifericos</a>
+
     </main>
 
     <footer>

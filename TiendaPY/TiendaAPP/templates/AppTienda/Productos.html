@@ -1,21 +1,27 @@
-
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Productos de Componentes de PC</title>
+
     <style>
-       
+        /* Estilos para el cuerpo, el encabezado y la barra de navegación */
         body {
-            background-color: #000000; /* Violeta oscuro */
+            background-color: #000000;
             color: white;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
-            background-color: #4B0082; /* Violeta más claro */
+            background-color: #4B0082;
             padding: 20px;
             text-align: center;
         }
@@ -33,49 +39,61 @@
         nav ul li a {
             text-decoration: none;
             color: white;
-            background-color: #FFFFFF; /* Fondo blanco */
-            color: #000000; /* Texto negro */
+            background-color: #FFFFFF;
+            color: #000000;
             padding: 10px 20px;
-            border-radius: 5px; /* Agregamos bordes redondeados para que se vea mejor */
+            border-radius: 5px;
         }
 
-        h1 {
-            margin: 0;
+        main {
+            flex: 1; /* Para ocupar el espacio restante en la ventana */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
 
-        section {
-            margin: 20px;
-            padding: 20px;
-            background-color: #4B0082; /* Violeta más claro */
-        }
+        /* Estilos para las secciones de productos */
+        .seccion-plegada {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    margin-bottom: 0;
+    background-color: #2E0854; /* Violeta oscuro */
+    color: white; /* Color de texto blanco */
+}
 
-        .producto {
-            background-color: #2E0854; /* Violeta oscuro */
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-
-        .producto h3 {
+.seccion-desplegada {
+    max-height: 1000px;
+    transition: max-height 0.5s ease-in;
+    margin-bottom: 20px;
+    background-color: #2E0854; /* Violeta oscuro */
+    color: white; /* Color de texto blanco */
+}
+        /* Estilos para los botones de toggle */
+        .toggle-button {
+            background-color: #2E0854;
             color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
         }
 
-        .producto p {
-            color: white;
-            margin: 5px 0;
+        .toggle-button:hover {
+            background-color: #4B0082;
         }
-
         footer {
-            background-color: #2E0854; /* Violeta oscuro */
-            padding: 20px;
-            text-align: center;
-        }
-
-        footer p {
-            margin: 0;
-            color: white;
-        }
+    background-color: #4B0082; /* Violeta más claro */
+    padding: 20px;
+    text-align: center;
+    color: white; /* Color de texto blanco */
+}
     </style>
 </head>
+
 <body>
     <header>
         <nav>
@@ -84,96 +102,137 @@
                 <li><a href="{% url 'Carrito' %}">Carrito</a></li>
                 <li><a href="{% url 'Contacto' %}">Contacto</a></li>
                 <li><a href="{% url 'Login' %}">Inicio de Sesion</a></li>
-                <li><a href="{% url 'formulario_procesador' %}">agregar productos</a></li>
-
-
             </ul>
         </nav>
         <h1>Productos de Componentes de PC</h1>
     </header>
-    
+
     <main>
         <!-- Categoría: Procesadores -->
-        <section id="procesadores">
-            <h2>Procesadores</h2>
-            <!-- Lista de productos de procesadores -->
+        <button class="toggle-button" onclick="toggleSection('procesadores')">Mostrar/Esconder Procesadores</button>
+        <div id="procesadores" class="seccion-plegada">
+            {% for procesador in procesadores %}
             <div class="producto">
-                <h3>Procesador 1</h3>
-                <p>Descripci&oacute;n del procesador 1.</p>
-                <p>Precio: $XX.XX</p>
-                <p>modelo</p>
+                <h3>Marca: {{ procesador.marca }}</h3>
+                <p>Descripcion: {{ procesador.descripcion }}</p>
+                <p>Precio: ${{ procesador.precio }}</p>
+                <p>Modelo: {{ procesador.modelo }}</p>
+                <p>Stock: {{ procesador.stock }}</p>
+                <button onclick="agregarAlCarrito('{{ procesador.marca }}')">Agregar al carrito</button>
+
             </div>
-         
-        </section>
-        
+            {% empty %}
+            <p>No hay procesadores disponibles.</p>
+            {% endfor %}
+        </div>
+
         <!-- Categoría: Memorias -->
-        <section id="memorias">
-            <h2>Memorias</h2>
-            <!-- Lista de productos de memorias -->
+        <button class="toggle-button" onclick="toggleSection('memorias')">Mostrar/Esconder Memorias</button>
+        <div id="memorias" class="seccion-plegada">
+            {% for memoria in memorias %}
             <div class="producto">
-                <h3>marca</h3>
-                <p>Descripci&oacute;n de la memoria 1.</p>
-                <p>Precio: $XX.XX</p>
-                <p>modelo</p>
+                <h3>Marca: {{ memoria.marca }}</h3>
+                <p>Descripcion: {{ memoria.descripcion }}</p>
+                <p>Precio: ${{ memoria.precio }}</p>
+                <p>Modelo: {{ memoria.modelo }}</p>
+                <p>Stock: {{ memoria.stock }}</p>
             </div>
-          
-        </section>
-        
+            {% empty %}
+            <p>No hay memorias disponibles.</p>
+            {% endfor %}
+        </div>
+
         <!-- Categoría: Motherboards -->
-        <section id="motherboards">
-            <h2>Motherboards</h2>
-            <!-- Lista de productos de motherboards -->
+        <button class="toggle-button" onclick="toggleSection('motherboards')">Mostrar/Esconder Motherboards</button>
+        <div id="motherboards" class="seccion-plegada">
+            {% for motherboard in motherboards %}
             <div class="producto">
-                <h3>Motherboard 1</h3>
-                <p>Descripci&oacute;n del motherboard 1.</p>
-                <p>Precio: $XX.XX</p>
-                <p>modelo</p>
+                <h3>Marca: {{ motherboard.marca }}</h3>
+                <p>Descripcion: {{ motherboard.descripcion }}</p>
+                <p>Precio: ${{ motherboard.precio }}</p>
+                <p>Modelo: {{ motherboard.modelo }}</p>
+                <p>Stock: {{ motherboard.stock }}</p>
             </div>
-           
-        </section>
-        
+            {% empty %}
+            <p>No hay motherboards disponibles.</p>
+            {% endfor %}
+        </div>
+
         <!-- Categoría: Fuentes de Poder -->
-        <section id="fuentes">
-            <h2>Fuentes de Poder</h2>
-            <!-- Lista de productos de fuentes de poder -->
+        <button class="toggle-button" onclick="toggleSection('fuentes')">Mostrar/Esconder Fuentes de Poder</button>
+        <div id="fuentes" class="seccion-plegada">
+            {% for fuente in fuentes %}
             <div class="producto">
-                <h3>Fuente de Poder 1</h3>
-                <p>Descripci&oacute;n de la fuente de poder 1.</p>
-                <p>Precio: $XX.XX</p>
-                <p>modelo</p>
+                <h3>Marca: {{ fuente.marca }}</h3>
+                <p>Descripcion: {{ fuente.descripcion }}</p>
+                <p>Precio: ${{ fuente.precio }}</p>
+                <p>Modelo: {{ fuente.modelo }}</p>
+                <p>Stock: {{ fuente.stock }}</p>
             </div>
-           
-        </section>
-        
+            {% empty %}
+            <p>No hay fuentes de poder disponibles.</p>
+            {% endfor %}
+        </div>
+
         <!-- Categoría: Discos -->
-        <section id="discos">
-            <h2>Discos</h2>
-            <!-- Lista de productos de discos -->
+        <button class="toggle-button" onclick="toggleSection('discos')">Mostrar/Esconder Discos</button>
+        <div id="discos" class="seccion-plegada">
+            {% for disco in discos %}
             <div class="producto">
-                <h3>Disco 1</h3>
-                <p>Descripci&oacute;n del disco 1.</p>
-                <p>Precio: $XX.XX</p>
-                <p>modelo</p>
+                <h3>Marca: {{ disco.nombre }}</h3>
+                <p>Descripcion: {{ disco.descripcion }}</p>
+                <p>Precio: ${{ disco.precio }}</p>
+                <p>Modelo: {{ disco.modelo }}</p>
+                <p>Stock: {{ disco.stock }}</p>
             </div>
-          
-        </section>
-        
+            {% empty %}
+            <p>No hay discos disponibles.</p>
+            {% endfor %}
+        </div>
+
         <!-- Categoría: Periféricos -->
-        <section id="perifericos">
-            <h2>Perif&eacute;ricos</h2>
-            <!-- Lista de productos de periféricos -->
+        <button class="toggle-button" onclick="toggleSection('perifericos')">Mostrar/Esconder Periféricos</button>
+        <div id="perifericos" class="seccion-plegada">
+            {% for periferico in perifericos %}
             <div class="producto">
-                <h3>Perif&eacute;rico 1</h3>
-                <p>Descripci&oacute;n del perif&eacute;rico 1.</p>
-                <p>Precio: $XX.XX</p>
-                <p>modelo</p>
+                <h3>Marca: {{ periferico.marca }}</h3>
+                <p>Descripción: {{ periferico.descripcion }}</p>
+                <p>Precio: ${{ periferico.precio }}</p>
+                <p>Modelo: {{ periferico.modelo }}</p>
+                <p>Stock: {{ periferico.stock }}</p>
             </div>
-      
-        </section>
+            {% empty %}
+            <p>No hay periféricos disponibles.</p>
+            {% endfor %}
+        </div>
     </main>
-    
+
     <footer>
         <p>&copy; 2023 Tienda de Componentes de PC</p>
     </footer>
+
+    <script>
+        function toggleSection(sectionId) {
+            var section = document.getElementById(sectionId);
+            section.classList.toggle('seccion-plegada');
+            section.classList.toggle('seccion-desplegada');
+        }
+        function agregarAlCarrito(productoMarca) {
+    // Enviar una solicitud al servidor para agregar el producto al carrito
+    fetch('/agregar_al_carrito/', {
+        method: 'POST',
+        body: JSON.stringify({'producto_marca': productoMarca}),
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.mensaje); // Mostrar el mensaje de respuesta
+    });
+}
+    </script>
 </body>
+
 </html>

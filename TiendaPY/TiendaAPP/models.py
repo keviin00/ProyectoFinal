@@ -50,3 +50,32 @@ class CustomUser(models.Model):
 
     def __str__(self):
         return self.username
+
+from django.db import models
+
+class Disco(models.Model):
+    marca = models.CharField(max_length=100)
+    descripcion = models.TextField()
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    modelo = models.CharField(max_length=100)
+    stock = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return self.marca
+
+class Periferico(models.Model):
+    marca = models.CharField(max_length=100)
+    descripcion = models.TextField()
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    modelo = models.CharField(max_length=100)
+    stock = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return self.marca
+    
+class CarritoItem(models.Model):
+    procesador = models.ForeignKey(Procesador, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.cantidad} x {self.procesador.modelo}"
