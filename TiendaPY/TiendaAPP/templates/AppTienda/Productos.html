@@ -9,28 +9,29 @@
 
     <style>
         * {
-    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total del elemento */
-}
-        /* Estilos para el cuerpo, el encabezado y la barra de navegación */
+            box-sizing: border-box;
+        }
+
+        html {
+            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Fija el fondo en su posición original */
+        }
+
         body {
-    background-image: url('https://images6.alphacoders.com/133/1330647.jpeg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Fija el fondo en su posición original */
-    color: white;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
 
         header {
-            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg'); /* Reemplaza 'ruta/a/tu/imagen.jpg' con la ruta de tu imagen de fondo */
-    background-size: cover; /* Esto asegurará que la imagen cubra todo el fondo */
-    background-repeat: no-repeat;
+            background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
             text-align: center;
         }
@@ -47,11 +48,18 @@
 
         nav ul li a {
             text-decoration: none;
-            color: white;
-            background-color: #2E0854;
             color: #ffffff;
             padding: 10px 20px;
             border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        h1 {
+            margin: 0;
         }
 
         main {
@@ -95,9 +103,7 @@
             background-color: #4B0082;
         }
         footer {
-            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg'); /* Reemplaza 'ruta/a/tu/imagen.jpg' con la ruta de tu imagen de fondo */
-    background-size: cover; /* Esto asegurará que la imagen cubra todo el fondo */
-    background-repeat: no-repeat;
+            background-color: rgba(0, 0, 0, 0.7);
     padding: 20px;
     text-align: center;
     color: white; /* Color de texto blanco */

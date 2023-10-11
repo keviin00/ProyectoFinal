@@ -19,10 +19,8 @@ body {
         min-height: 100vh;
     }
 
-        header {
-            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg'); /* Reemplaza 'ruta/a/tu/imagen.jpg' con la ruta de tu imagen de fondo */
-    background-size: cover; /* Esto asegurará que la imagen cubra todo el fondo */
-    background-repeat: no-repeat;
+    header {
+            background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
             text-align: center;
         }
@@ -39,11 +37,14 @@ body {
 
         nav ul li a {
             text-decoration: none;
-            color: white;
-            background-color: #2E0854;
             color: #ffffff;
             padding: 10px 20px;
             border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
         h1 {
@@ -53,7 +54,7 @@ body {
         section#carrito {
             margin: 20px;
             padding: 20px;
-            background-color: #4B0082; /* Violeta más claro */
+            background-color: rgba(0, 0, 0, 0.7); /* Violeta más claro */
         }
 
         table {
@@ -69,22 +70,20 @@ body {
         }
 
         table th {
-            background-color: #2E0854; /* Violeta oscuro */
+            background-color: rgba(0, 0, 0, 0.7); /* Violeta oscuro */
             color: white;
         }
 
         /* Estilos para el resumen del carrito */
         #resumen {
-            background-color: #2E0854; /* Violeta oscuro */
+            background-color: rgba(0, 0, 0, 0.7); /* Violeta oscuro */
             color: white;
             padding: 10px;
             text-align: right;
         }
 
         footer {
-            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg'); /* Reemplaza 'ruta/a/tu/imagen.jpg' con la ruta de tu imagen de fondo */
-    background-size: cover; /* Esto asegurará que la imagen cubra todo el fondo */
-    background-repeat: no-repeat;
+            background-color: rgba(0, 0, 0, 0.7);
     padding: 36px;
     text-align: center;
     color: white; /* Color de texto blanco */
