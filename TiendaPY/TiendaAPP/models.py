@@ -42,16 +42,9 @@ class Motherboard(models.Model):
         return self.modelo
     
     
-class CustomUser(models.Model):
-    email = models.EmailField(unique=True)
-    nombre = models.CharField(max_length=255)
-    contrasena = models.CharField(max_length=255)  
-    direccion = models.TextField()
 
-    def __str__(self):
-        return self.username
 
-from django.db import models
+
 
 class Disco(models.Model):
     marca = models.CharField(max_length=100)
@@ -79,3 +72,12 @@ class CarritoItem(models.Model):
 
     def __str__(self):
         return f"{self.cantidad} x {self.procesador.modelo}"
+
+class CustomUser(models.Model):
+    email = models.EmailField(unique=True)
+    nombre = models.CharField(max_length=255)
+    contrasena = models.CharField(max_length=255)  
+    direccion = models.TextField()
+
+    def __str__(self):
+        return self.username

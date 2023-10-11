@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Producto Agregado</title>
     <style>
-      body {
+        body {
             background-image: url('https://images6.alphacoders.com/133/1330647.jpeg');
-        background-size: cover;
-        background-repeat: no-repeat;
+            background-size: cover;
+            background-repeat: no-repeat;
             color: white;
             font-family: Arial, sans-serif;
             margin: 0;
@@ -17,18 +17,22 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            align-items: center;
+            justify-content: center;
         }
+
         .message-box {
-            background-color: #000000;
+            background-color: rgba(0, 0, 0, 0.8);
             color: white;
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 20px;
+            text-align: center;
         }
 
         .button {
             background-color: #ffffff;
-            color: rgb(0, 0, 0);
+            color: #000000;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
@@ -38,15 +42,17 @@
         }
 
         .button:hover {
-            background-color: #ffffff;
+            background-color: #eeeeee;
         }
 
         .add-button {
             background-color: #002fff;
+            color: white;
         }
 
         .home-button {
             background-color: #002fff;
+            color: white;
         }
     </style>
 </head>
@@ -55,8 +61,6 @@
     <div class="message-box">
         ¡Producto Agregado Correctamente!
     </div>
-    <div class="product-info">
-    </div>
 
     <!-- Agregar un botón para agregar más productos -->
     <a href="{% url 'formulario_procesador' %}" class="button add-button">Agregar Más Procesadores</a>
@@ -64,8 +68,7 @@
     <a href="{% url 'formulario_memoria' %}" class="button add-button">Agregar Más Memoria</a>
     <a href="{% url 'formulario_motherboard' %}" class="button add-button">Agregar Más Motherboard</a>
     <a href="{% url 'formulario_discos' %}" class="button add-button">Agregar Discos</a>
-    <a href="{% url 'formulario_periferico' %}" class="button add-button">Agregar Perifericos</a>
-   
+    <a href="{% url 'formulario_periferico' %}" class="button add-button">Agregar Periféricos</a>
 
     <!-- Agregar un botón para ir al inicio -->
     <a href="{% url 'Portada' %}" class="button home-button">Ir al Inicio</a>

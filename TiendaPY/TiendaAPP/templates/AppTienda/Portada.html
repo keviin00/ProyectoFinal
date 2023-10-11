@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda de Componentes de PC</title>
-  
     <style>
-
         body {
             background-image: url('https://images6.alphacoders.com/133/1330647.jpeg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        color: white;
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
-            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg');
-    background-size: cover; /* Esto asegurará que la imagen cubra todo el fondo */
-    background-repeat: no-repeat;
+            background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
             text-align: center;
         }
@@ -40,11 +37,14 @@
 
         nav ul li a {
             text-decoration: none;
-            color: white;
-            background-color: #2E0854;
             color: #ffffff;
             padding: 10px 20px;
             border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
         h1 {
@@ -54,62 +54,43 @@
         section#destacados {
             margin: 20px;
             padding: 20px;
-            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg');
-        background-size: cover;
-        background-repeat: no-repeat; /* Violeta más claro */
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .columna {
+            width: 45%;
+            margin: 0 2.5%;
+            box-sizing: border-box;
+            vertical-align: top;
         }
 
         .producto {
-            background-color: #2E0854; /* Violeta oscuro */
+            background-color: rgba(46, 8, 84, 0.8);
             padding: 10px;
             margin-bottom: 20px;
+            border-radius: 10px;
         }
 
         .producto h3 {
-            color: white;
+            color: #ffffff;
         }
 
         .producto p {
-            color: white;
+            color: #ffffff;
             margin: 5px 0;
         }
 
-        section#categorias {
-            margin: 20px;
-            padding: 20px;
-            background-color: #4B0082; /* Violeta más claro */
-        }
-
-        #categorias ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        #categorias ul li {
-            margin-bottom: 10px;
-        }
-
-        #categorias ul li a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-        }
-
         footer {
-            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg'); 
-    background-size: cover; /* Esto asegurará que la imagen cubra todo el fondo */
-    background-repeat: no-repeat;
-    padding: 20px;
-    text-align: center;
-    color: white; /* Color de texto blanco */
-        }
-
-        footer p {
-            margin: 0;
-            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            text-align: center;
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
@@ -118,39 +99,84 @@
                 <li><a href="{% url 'Carrito' %}">Carrito</a></li>
                 <li><a href="{% url 'Contacto' %}">Contacto</a></li>
                 <li><a href="{% url 'Login' %}">Inicio de Sesion</a></li>
-
             </ul>
         </nav>
-        <h1>Bienvenido Nuestra Tienda</h1>
+        <h1>Bienvenido a Nuestra Tienda</h1>
     </header>
-    
+
     <main>
         <section id="destacados">
-            <h2>Productos Destacados</h2>
-            <!-- Aquí puedes listar los productos destacados -->
-            <div class="producto">
-                <h3>Producto 1</h3>
-                <p>Descripcion del producto 1.</p>
-                <p>Precio: $XX.XX</p>
+            <div class="columna">
+                <h2>Mejores procesadores</h2>
+                {% for procesador in procesadores %}
+                <div class="producto">
+                    <h3>{{ procesador.modelo }}</h3>
+                    <p>{{ procesador.descripcion }}</p>
+                    <p>Precio: ${{ procesador.precio }}</p>
+                </div>
+                {% endfor %}
             </div>
 
-            <div class="producto">
-                <h3>Producto 2</h3>
-                <p>Descripcion del producto 2.</p>
-                <p>Precio: $XX.XX</p>
+            <div class="columna">
+                <h2>Mejores memorias</h2>
+                {% for memoria in memorias %}
+                <div class="producto">
+                    <h3>{{ memoria.modelo }}</h3>
+                    <p>{{ memoria.descripcion }}</p>
+                    <p>Precio: ${{ memoria.precio }}</p>
+                </div>
+                {% endfor %}
             </div>
 
-            <div class="producto">
-                <h3>Producto 3</h3>
-                <p>Descripcion del producto 3.</p>
-                <p>Precio: $XX.XX</p>
+            <div class="columna">
+                <h2>Mejores fuentes</h2>
+                {% for fuente in fuentes %}
+                <div class="producto">
+                    <h3>{{ fuente.modelo }}</h3>
+                    <p>{{ fuente.descripcion }}</p>
+                    <p>Precio: ${{ fuente.precio }}</p>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="columna">
+                <h2>Mejores motherboards</h2>
+                {% for motherboard in motherboards %}
+                <div class="producto">
+                    <h3>{{ motherboard.modelo }}</h3>
+                    <p>{{ motherboard.descripcion }}</p>
+                    <p>Precio: ${{ motherboard.precio }}</p>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="columna">
+                <h2>Mejores discos</h2>
+                {% for disco in discos %}
+                <div class="producto">
+                    <h3>{{ disco.modelo }}</h3>
+                    <p>{{ disco.descripcion }}</p>
+                    <p>Precio: ${{ disco.precio }}</p>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="columna">
+                <h2>Mejores periféricos</h2>
+                {% for periferico in perifericos %}
+                <div class="producto">
+                    <h3>{{ periferico.modelo }}</h3>
+                    <p>{{ periferico.descripcion }}</p>
+                    <p>Precio: ${{ periferico.precio }}</p>
+                </div>
+                {% endfor %}
             </div>
         </section>
-        
     </main>
-    
+
     <footer>
         <p>&copy; 2023 Tienda de Componentes de PC</p>
     </footer>
 </body>
+
 </html>

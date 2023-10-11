@@ -8,8 +8,8 @@
     <style>
 body {
     background-image: url('https://images6.alphacoders.com/133/1330647.jpeg');
-        background-size: cover;
-        background-repeat: no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
     color: white;
     font-family: Arial, sans-serif;
     margin: 0;
@@ -21,8 +21,8 @@ body {
 
 header {
     background-image: url('https://images6.alphacoders.com/133/1330647.jpeg');
-        background-size: cover;
-        background-repeat: no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
     padding: 20px;
     text-align: center;
 }
@@ -41,9 +41,13 @@ nav ul li a {
     text-decoration: none;
     color: white;
     background-color: #2E0854;
-    color: #ffffff;
     padding: 10px 20px;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #4B0082;
 }
 
 main {
@@ -83,23 +87,36 @@ form input[type="email"] {
     background-color: #FFFFFF;
 }
 
-form button[type="submit"] {
+form button[type="submit"],
+.form button {
     background-color: #2E0854;
     color: #ffffff;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+form button[type="submit"]:hover,
+.form button:hover {
+    background-color: #4B0082;
+}
+
+.button {
+    margin-top: 10px;
 }
 
 footer {
-            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg'); 
-    background-size: cover; /* Esto asegurará que la imagen cubra todo el fondo */
+    background-image: url('https://images6.alphacoders.com/133/1330647.jpeg');
+    background-size: cover;
     background-repeat: no-repeat;
     padding: 20px;
     text-align: center;
-    color: white; /* Color de texto blanco */
+    color: white;
 }
+
 .button {
     background-color: #2E0854;
     color: #ffffff;
