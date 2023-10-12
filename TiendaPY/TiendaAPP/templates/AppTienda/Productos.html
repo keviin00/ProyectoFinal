@@ -118,7 +118,6 @@
                 <li><a href="{% url 'Portada' %}">Inicio</a></li>
                 <li><a href="{% url 'Carrito' %}">Carrito</a></li>
                 <li><a href="{% url 'Contacto' %}">Contacto</a></li>
-                <li><a href="{% url 'Login' %}">Inicio de Sesion</a></li>
             </ul>
         </nav>
         <h1>Componentes de PC</h1>
@@ -232,23 +231,8 @@
         function toggleSection(sectionId) {
             var section = document.getElementById(sectionId);
             section.classList.toggle('seccion-plegada');
-            section.classList.toggle('seccion-desplegada');
-        }
-        function agregarAlCarrito(productoMarca) {
-    // Enviar una solicitud al servidor para agregar el producto al carrito
-    fetch('/agregar_al_carrito/', {
-        method: 'POST',
-        body: JSON.stringify({'producto_marca': productoMarca}),
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': '{{ csrf_token }}'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert(data.mensaje); // Mostrar el mensaje de respuesta
-    });
-}
+            section.classList.toggle('seccion-desplegada');}
+    
     </script>
 </body>
 

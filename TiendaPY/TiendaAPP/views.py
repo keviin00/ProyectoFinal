@@ -1,10 +1,11 @@
-from itertools import product
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.template import Context, Template
+from django.contrib.auth import authenticate, login
 
-from TiendaAPP.forms import RegistroForm
-from .models import Fuente, Memoria, Motherboard, Periferico, Procesador,Disco  
+from TiendaAPP.forms import CustomUserCreationForm
+from .models import Fuente, Memoria, Motherboard, Periferico, Procesador,Disco, Usuario  
+from django.shortcuts import render
 
 
 def Carrito(request):
@@ -50,7 +51,8 @@ def Productos(request):
     fuentes = Fuente.objects.all()
     motherboards = Motherboard.objects.all()
     perifericos = Periferico.objects.all()  
-    discos = Disco.objects.all() 
+    discos = Disco.objects.all()
+    
 
     return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Productos.html', {
         'procesadores': procesadores,
@@ -62,34 +64,7 @@ def Productos(request):
     })
 
 
-def Login(request):
-    miHTML = open(
-        r"C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Login.html")
-    plantilla = Template(miHTML.read())
-    miHTML.close()
-    Context1 = Context()
-    return HttpResponse(plantilla.render(Context1))
 
-
-def Registro(request):
-    if request.method == 'POST':
-        form = RegistroForm(request.POST)
-        if form.is_valid():
-            form.save()
-
-            return redirect(r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Portada.html')
-    else:
-        form = RegistroForm()
-    return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Registro.html', {'form': form})
-
-
-def RecuperarPass(request):
-    miHTML = open(
-        r"C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\RecuperarPass.html")
-    plantilla = Template(miHTML.read())
-    miHTML.close()
-    Context1 = Context()
-    return HttpResponse(plantilla.render(Context1))
 
 
 def agregar_procesador(request):
@@ -98,14 +73,12 @@ def agregar_procesador(request):
         marca = request.POST['marca']
         descripcion = request.POST['descripcion']
         precio = request.POST['precio']
-        # Obtener el valor del campo stock del formulario
         stock = request.POST['stock']
 
         procesador = Procesador(
             modelo=modelo, marca=marca, descripcion=descripcion, precio=precio, stock=stock)
         procesador.save()
 
-        # Puedes redirigir a otra página o mostrar un mensaje de éxito
         return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\exito.html')
 
     return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\formulario_procesador.html')
@@ -137,7 +110,7 @@ def agregar_memoria(request):
         stock = request.POST['stock']
 
         memoria = Memoria(modelo=modelo, marca=marca,
-                          descripcion=descripcion, precio=precio, stock=stock)
+                        descripcion=descripcion, precio=precio, stock=stock)
         memoria.save()
 
         return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\exito.html')
@@ -178,7 +151,7 @@ def agregar_periferico(request):
 
     return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\formulario_periferico.html')
 
-from .models import Disco  # Asegúrate de importar el modelo Disco
+from .models import Disco  
 
 def agregar_disco(request):
     if request.method == 'POST':
@@ -196,3 +169,31 @@ def agregar_disco(request):
     return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\formulario_discos.html')
 
 
+
+def Registro(request):
+    if request.method == 'POST':
+        mail = request.POST['mail']
+        contraseña = request.POST['contraseña']
+        nombre_de_usuario = request.POST['nombre_de_usuario']
+        direccion = request.POST['direccion']
+        nombre_completo = request.POST['nombre_completo']
+
+        Usuario.objects.create(mail=mail, contraseña=contraseña,
+        nombre_completo=nombre_completo, direccion=direccion, nombre_de_usuario=nombre_de_usuario)
+        return redirect('Portada')
+    
+
+    return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Registro.html')
+
+
+
+
+def Login(request):
+    if request.method == 'POST':
+        mail = request.POST['mail']
+        contraseña = request.POST['contraseña']
+        usuario = authenticate(request, username=mail, password=contraseña)
+        if usuario:
+            login(request, usuario)
+            return redirect('Portada')
+    return render(request, r'C:\Users\operador48\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Login.html')

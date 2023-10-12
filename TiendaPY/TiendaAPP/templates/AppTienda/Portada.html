@@ -98,7 +98,11 @@
                 <li><a href="{% url 'Productos' %}">Productos</a></li>
                 <li><a href="{% url 'Carrito' %}">Carrito</a></li>
                 <li><a href="{% url 'Contacto' %}">Contacto</a></li>
-                <li><a href="{% url 'Login' %}">Inicio de Sesion</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="#">{{ user.username }}</a></li>
+                {% else %}
+                    <li><a href="{% url 'Login' %}">Inicio de Sesión</a></li>
+                {% endif %}
             </ul>
         </nav>
         <h1>Bienvenido a Nuestra Tienda</h1>

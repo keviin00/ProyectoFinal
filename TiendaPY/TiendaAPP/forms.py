@@ -1,9 +1,9 @@
 from django import forms
-from .models import CustomUser
 
-class RegistroForm(forms.ModelForm):
+class CustomUserCreationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
 
-    class Meta:
-        model = CustomUser
-        fields = ['email', 'nombre', 'password', 'direccion']
+
+class LoginForm(forms.Form):
+    email = forms.EmailField(label='Correo Electrónico')
+    password = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
