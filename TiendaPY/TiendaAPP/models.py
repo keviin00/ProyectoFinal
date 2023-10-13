@@ -1,7 +1,5 @@
-from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.utils.translation import gettext_lazy as _
-
+from django.contrib.auth.models import AbstractUser
 
 class Procesador(models.Model):
     modelo = models.CharField(max_length=100)
@@ -67,16 +65,6 @@ class Periferico(models.Model):
 
     def __str__(self):
         return self.marca
+    
 
-
-
-class Usuario(models.Model):
-    mail = models.EmailField(unique=True)
-    contraseña = models.CharField(max_length=128)
-    nombre_completo = models.CharField(max_length=255, default='0')
-    direccion = models.CharField(max_length=255, default='0')
-    nombre_de_usuario = models.CharField(max_length=50, unique=True, default='0')
-
-def __str__(self):
-        return self.nombre_de_usuario
 

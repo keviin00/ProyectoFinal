@@ -7,14 +7,14 @@
     <style>
      
         body {
-            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg'); 
-    background-size: cover; /* Esto asegurará que la imagen cubra todo el fondo */
-    background-repeat: no-repeat;   
+            background-color: #000000; /* Violeta oscuro */
             color: white;
             font-family: Arial, sans-serif;
         }
         header {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg'); 
+    background-size: cover; /* Esto asegurará que la imagen cubra todo el fondo */
+    background-repeat: no-repeat;
             padding: 20px;
             text-align: center;
         }
@@ -31,14 +31,11 @@
 
         nav ul li a {
             text-decoration: none;
+            color: white;
+            background-color: #2E0854;
             color: #ffffff;
             padding: 10px 20px;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
         }
 
         h1 {
@@ -48,7 +45,9 @@
         section {
             margin: 20px;
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.7);      }
+            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg'); 
+    background-size: cover; /* Esto asegurará que la imagen cubra todo el fondo */
+    background-repeat: no-repeat;        }
 
         label {
             display: block;
@@ -76,7 +75,7 @@
 
       
         #contacto-adicional {
-           background-color: rgba(0, 0, 0, 0.7); /* Violeta más claro */
+            background-color: #4B0082; /* Violeta más claro */
             padding: 20px;
             text-align: center;
         }
@@ -97,7 +96,9 @@
         }
 
         footer {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg'); 
+    background-size: cover; /* Esto asegurará que la imagen cubra todo el fondo */
+    background-repeat: no-repeat;
     padding: 20px;
     text-align: center;
     color: white; /* Color de texto blanco */
@@ -110,6 +111,7 @@
             <ul>
                 <li><a href="{% url 'Portada' %}">Inicio</a></li>
                 <li><a href="{% url 'Productos' %}">Productos</a></li>
+
 
             </ul>
         </nav>

@@ -96,12 +96,15 @@
         <nav>
             <ul>
                 <li><a href="{% url 'Productos' %}">Productos</a></li>
+                {% if user.is_authenticated %}
                 <li><a href="{% url 'Carrito' %}">Carrito</a></li>
+                {% endif %}
                 <li><a href="{% url 'Contacto' %}">Contacto</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="#">{{ user.username }}</a></li>
+                <li><a href="{% url 'CerrarSesion' %}">Cerrar Sesion</a></li>
                 {% else %}
-                    <li><a href="{% url 'Login' %}">Inicio de Sesión</a></li>
+                <li><a href="{% url 'Login' %}">Iniciar Sesion</a></li>
+                <li><a href="{% url 'Registro' %}">Registrarse</a></li>
                 {% endif %}
             </ul>
         </nav>

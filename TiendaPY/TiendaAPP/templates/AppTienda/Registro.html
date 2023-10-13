@@ -20,32 +20,35 @@ body {
 }
 
 header {
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            text-align: center;
-        }
+    background-image: url('https://images6.alphacoders.com/133/1330647.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 20px;
+    text-align: center;
+}
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
+nav ul {
+    list-style: none;
+    padding: 0;
+}
 
-        nav ul li {
-            display: inline;
-            margin-right: 20px;
-        }
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
 
-        nav ul li a {
-            text-decoration: none;
-            color: #ffffff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    background-color: #2E0854;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
 
-        nav ul li a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
+nav ul li a:hover {
+    background-color: #4B0082;
+}
 
 main {
     flex: 1;
@@ -59,7 +62,7 @@ main {
 form {
     max-width: 400px;
     width: 100%;
-    background-color: rgba(46, 8, 84, 0.8);
+    background-color: #4B0082;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
@@ -106,7 +109,9 @@ form button[type="submit"]:hover,
 }
 
 footer {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-image: url('https://images6.alphacoders.com/133/1330647.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
     padding: 20px;
     text-align: center;
     color: white;
@@ -140,6 +145,7 @@ footer {
                 <li><a href="{% url 'Portada' %}">Inicio</a></li>
                 <li><a href="{% url 'Productos' %}">Productos</a></li>
                 <li><a href="{% url 'Contacto' %}">Contacto</a></li>
+                
             </ul>
         </nav>
         <h1>Registro</h1>
@@ -147,24 +153,12 @@ footer {
     </header>
 
     <main>
-        <form method="post">
-            {% csrf_token %}
-            <label for="mail">Correo Electrónico:</label>
-            <input type="email" name="mail" required><br>
-        
-            <label for="contraseña">Contraseña:</label>
-            <input type="password" name="contraseña" required><br>
-        
-            <label for="nombre_completo">Nombre Completo:</label>
-            <input type="text" name="nombre_completo" required><br>
-        
-            <label for="direccion">Dirección:</label>
-            <input type="text" name="direccion" required><br>
-        
-            <label for="nombre_de_usuario">Nombre de Usuario:</label>
-            <input type="text" name="nombre_de_usuario" required><br>
-        
-            <button type="submit">Registrar</button>
+        <form method="POST">
+            {% csrf_token %} 
+            {{ Registro.as_p}}
+            <button type="submit">Registrarse</button>
+            
+
         </form>
         
     </main>

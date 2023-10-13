@@ -9,29 +9,28 @@
 
     <style>
         * {
-            box-sizing: border-box;
-        }
-
-        html {
-            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed; /* Fija el fondo en su posición original */
-        }
-
+    box-sizing: border-box; 
+}
+       
         body {
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+    background-image: url('https://images6.alphacoders.com/133/1330647.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Fija el fondo en su posición original */
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 
 
         header {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg'); 
+    background-size: cover; /* Esto asegurará que la imagen cubra todo el fondo */
+    background-repeat: no-repeat;
             padding: 20px;
             text-align: center;
         }
@@ -48,18 +47,11 @@
 
         nav ul li a {
             text-decoration: none;
+            color: white;
+            background-color: #2E0854;
             color: #ffffff;
             padding: 10px 20px;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        h1 {
-            margin: 0;
         }
 
         main {
@@ -103,7 +95,9 @@
             background-color: #4B0082;
         }
         footer {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg'); 
+    background-size: cover; /* Esto asegurará que la imagen cubra todo el fondo */
+    background-repeat: no-repeat;
     padding: 20px;
     text-align: center;
     color: white; /* Color de texto blanco */
@@ -116,8 +110,16 @@
         <nav>
             <ul>
                 <li><a href="{% url 'Portada' %}">Inicio</a></li>
+                {% if user.is_authenticated %}
                 <li><a href="{% url 'Carrito' %}">Carrito</a></li>
+                {% endif %}
                 <li><a href="{% url 'Contacto' %}">Contacto</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'CerrarSesion' %}">Cerrar Sesion</a></li>
+                {% else %}
+                <li><a href="{% url 'Login' %}">Iniciar Sesion</a></li>
+                <li><a href="{% url 'Registro' %}">Registrarse</a></li>
+                {% endif %}
             </ul>
         </nav>
         <h1>Componentes de PC</h1>
@@ -231,8 +233,9 @@
         function toggleSection(sectionId) {
             var section = document.getElementById(sectionId);
             section.classList.toggle('seccion-plegada');
-            section.classList.toggle('seccion-desplegada');}
-    
+            section.classList.toggle('seccion-desplegada');
+        }
+     
     </script>
 </body>
 
