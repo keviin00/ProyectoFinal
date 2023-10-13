@@ -210,6 +210,9 @@ def Login(request):
                 'Inicio_de_sesion' : AuthenticationForm,
                 'error' : 'Usuario o contraseña incorrecta'     
                 })
+            else:
+                login(request, user)
+                return render(request,r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Portada.html')
 
 def CerrarSesion(request):
     logout(request)
