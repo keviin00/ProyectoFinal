@@ -118,34 +118,50 @@ body {
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Producto 1 -->
+                    {% for Procesador in carrito.Procesador.all %}
                     <tr>
-                        <td>Producto 1</td>
-                        <td>2</td>
-                        <td>$XX.XX</td>
-                        <td>$XX.XX</td>
+                        <td>{{ Procesador.modelo }}</td>
+                        <td>${{ Procesador.precio }}</td>
                     </tr>
-                    <!-- Producto 2 -->
+                    {% endfor %}
+                    {% for Memoria in carrito.Memoria.all %}
                     <tr>
-                        <td>Producto 2</td>
-                        <td>1</td>
-                        <td>$XX.XX</td>
-                        <td>$XX.XX</td>
+                        <td>{{ Memoria.modelo }}</td>
+                        <td>${{ Memoria.precio }}</td>
                     </tr>
+                    {% endfor %}
+                    {% for Fuente in carrito.Fuente.all %}
                     <tr>
-                        <td>Producto 3</td>
-                        <td>1</td>
-                        <td>$XX.XX</td>
-                        <td>$XX.XX</td>
+                        <td>{{ Fuente.modelo }}</td>
+                        <td>${{ Fuente.precio }}</td>
                     </tr>
-               
+                    {% endfor %}
+                    {% for Motherboard in carrito.Motherboard.all %}
+                    <tr>
+                        <td>{{ Motherboard.modelo }}</td>
+                        <td>${{ Motherboard.precio }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% for Disco in carrito.Disco.all %}
+                    <tr>
+                        <td>{{ Disco.modelo }}</td>
+                        <td>${{ Disco.precio }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% for Periferico in carrito.Periferico.all %}
+                    <tr>
+                        <td>{{ Periferico.modelo }}</td>
+                        <td>${{ Periferico.precio }}</td>
+                    </tr>
+                    {% endfor %}
+
                 </tbody>
             </table>
             
             <!-- Resumen del Carrito -->
             <div id="resumen">
-                <p>Total de Productos: 3</p>
-                <p>Precio Final: $XX.XX</p>
+                <p>Total de Productos: {{ carrito.procesadores.count }} procesadores, {{ carrito.memorias.count }} memorias, etc.</p>
+                <p>Precio Final: ${{ total }}</p>
             </div>
         </section>
     </main>

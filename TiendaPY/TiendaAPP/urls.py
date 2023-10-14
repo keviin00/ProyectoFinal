@@ -18,6 +18,9 @@ urlpatterns = [
     path('Agregar_MemoriaRam/', views.agregar_memoria, name='formulario_memoria'),
     path('Agregar_Perifericos/', views.agregar_periferico, name='formulario_periferico'),
     path('Agregar_Discos/', views.agregar_disco, name='formulario_discos'),    
+    path('agregar_al_carrito/<str:tipo_producto>/<int:producto_id>/', views.agregar_al_carrito, name='agregar_al_carrito'),
+
+
      
    
 ]

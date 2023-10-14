@@ -138,18 +138,20 @@
         <button class="toggle-button" onclick="toggleSection('procesadores')">Mostrar/Esconder Procesadores</button>
         <div id="procesadores" class="seccion-plegada">
             {% for procesador in procesadores %}
-            <div class="producto">
-                <h3>Marca: {{ procesador.marca }}</h3>
-                <p>Descripcion: {{ procesador.descripcion }}</p>
-                <p>Precio: ${{ procesador.precio }}</p>
-                <p>Modelo: {{ procesador.modelo }}</p>
-                <p>Stock: {{ procesador.stock }}</p>
-               
-
-            </div>
-            {% empty %}
-            <p>No hay procesadores disponibles.</p>
-            {% endfor %}
+    <div class="producto">
+        <h4>{{ procesador.modelo }}</h4>
+        <p>Marca: {{ procesador.marca }}</p>
+        <p>Descripción: {{ procesador.descripcion }}</p>
+        <p>Precio: ${{ procesador.precio }}</p>
+        <p>Stock: {{ procesador.stock }}</p>
+        <form action="{% url 'agregar_al_carrito' 'procesador' procesador.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Agregar al Carrito</button>
+        </form>
+    </div>
+    {% empty %}
+    <p>No hay procesadores disponibles.</p>
+    {% endfor %}
         </div>
 
         <!-- Categoría: Memorias -->

@@ -1,19 +1,14 @@
 from itertools import product
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.template import Context, Template
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from .models import Fuente, Memoria, Motherboard, Periferico, Procesador,Disco  
+from .models import Carrito, Fuente, Memoria, Motherboard, Periferico, Procesador,Disco
 from django.contrib.auth import login,logout,authenticate
+from django.contrib.auth.decorators import login_required
 
-def Carrito(request):
-    miHTML = open(r"TiendaAPP\templates\AppTienda\Carrito.html")
-    plantilla = Template(miHTML.read())
-    miHTML.close()
-    Context1 = Context()
-    return HttpResponse(plantilla.render(Context1))
 
 
 def Contacto(request):
@@ -217,3 +212,43 @@ def Login(request):
 def CerrarSesion(request):
     logout(request)
     return render(request, r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Portada.html')
+
+
+def agregar_al_carrito(request, tipo_producto, producto_id):
+    carrito,created = Carrito.objects.get_or_create(usuario=request.user)
+
+    modelo_producto = PRODUCTO_MODELOS.get(tipo_producto, None)
+    if modelo_producto:
+        producto = get_object_or_404(modelo_producto, pk=producto_id)
+
+        # Verificar el tipo de producto y agregarlo al carrito
+        if tipo_producto == 'procesador':
+            carrito.procesador.add(producto)
+        elif tipo_producto == 'memoria':
+            carrito.memoria.add(producto)
+        elif tipo_producto == 'fuente':
+            carrito.fuente.add(producto)
+        elif tipo_producto == 'motherboard':
+            carrito.motherboard.add(producto)
+        elif tipo_producto == 'disco':
+            carrito.disco.add(producto)
+        elif tipo_producto == 'periferico':
+            carrito.periferico.add(producto)
+
+    carrito.save()
+    return render(request, r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Productos.html')
+    
+def Carrito(request):
+    carrito = Carrito.objects.get_or_create(usuario=request.user)
+    total = carrito.total()
+    return render(request, r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Carrito.html', {'carrito': carrito, 'total': total})
+
+
+PRODUCTO_MODELOS = {
+    'procesador': Procesador,
+    'memoria': Memoria,
+    'periferico': Periferico,
+    'disco': Disco,
+    'fuente': Fuente,
+    'motherboard': Motherboard,
+}
