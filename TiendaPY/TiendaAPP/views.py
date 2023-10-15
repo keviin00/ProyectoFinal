@@ -5,7 +5,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.template import Context, Template
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from .models import Carrito, Fuente, Memoria, Motherboard, Periferico, Procesador,Disco
+
+
+from .models import   Fuente, Memoria, Motherboard, Periferico, Procesador,Disco
 from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.decorators import login_required
 
@@ -214,41 +216,69 @@ def CerrarSesion(request):
     return render(request, r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Portada.html')
 
 
-def agregar_al_carrito(request, tipo_producto, producto_id):
-    carrito,created = Carrito.objects.get_or_create(usuario=request.user)
+def carrito_agregar_Procesador(request, procesador_id):
+    carrito = Carrito(request)
+    procesador_obj = Procesador.objects.get(id=procesador_id)
+    carrito.agregar(procesador_obj)
+    return render(request,r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Carrito.html')
 
-    modelo_producto = PRODUCTO_MODELOS.get(tipo_producto, None)
-    if modelo_producto:
-        producto = get_object_or_404(modelo_producto, pk=producto_id)
+def Eliminar_Procesador(request, procesador_id):
+    carrito = Carrito(request)
+    Procesador = Procesador.objects.get(id+procesador_id)
+    carrito.eliminar(Procesador)
+    return render(request,r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Productos.html')
 
-        # Verificar el tipo de producto y agregarlo al carrito
-        if tipo_producto == 'procesador':
-            carrito.procesador.add(producto)
-        elif tipo_producto == 'memoria':
-            carrito.memoria.add(producto)
-        elif tipo_producto == 'fuente':
-            carrito.fuente.add(producto)
-        elif tipo_producto == 'motherboard':
-            carrito.motherboard.add(producto)
-        elif tipo_producto == 'disco':
-            carrito.disco.add(producto)
-        elif tipo_producto == 'periferico':
-            carrito.periferico.add(producto)
+def restar_Procesador(request, procesador_id):
+    carrito = Carrito(request)
+    Procesador = Procesador.objects.get(id+procesador_id)
+    carrito.restar(Procesador)
+    return render(request,r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Productos.html')
 
-    carrito.save()
-    return render(request, r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Productos.html')
-    
-def Carrito(request):
-    carrito = Carrito.objects.get_or_create(usuario=request.user)
-    total = carrito.total()
-    return render(request, r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Carrito.html', {'carrito': carrito, 'total': total})
+def limpiar_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return render(request,r'C:\Users\kevin\Desktop\TiendaPY\TiendaAPP\templates\AppTienda\Productos.html')
 
 
-PRODUCTO_MODELOS = {
-    'procesador': Procesador,
-    'memoria': Memoria,
-    'periferico': Periferico,
-    'disco': Disco,
-    'fuente': Fuente,
-    'motherboard': Motherboard,
-}
+class Carrito:
+    def __init__(self,request) :
+        self.request = request
+        self.session = request.session
+        Carrito = self.session.get("Carrito")
+        if not Carrito:
+            self.session['Carrito']={}
+            self.Carrito = self.session['Carrito']
+        else:
+            self.Carrito=Carrito
+    def agregar(self, Procesador):
+        id = str(Procesador.id)
+        if id not in self.Carrito.keys():
+            self.Carrito[id]={
+                "procesador_id" : Procesador.id,
+                'nombre' :  Procesador.marca,
+                'nombre2': Procesador.modelo,
+                'stock': Procesador.stock,
+                'cantidad': 1,
+            }
+        else:
+            self.Carrito[id]["cantidad"] +=1
+            self.Carrito[id]['stock'] += Procesador.stock
+        self.guardar_Carrito()
+    def guardar_Carrito(self):
+        self.session['Carrito'] = self.Carrito
+        self.session.modified = True
+    def eliminar(self, Procesador):
+        id = str(Procesador.id)
+        if id in self.Carrito:
+            del self.Carrito[id]
+            self.guardar_Carrito()
+    def restar(self,Procesador):
+        id = str(Procesador.id)
+        self.Carrito[id]["cantidad"] -=1
+        self.Carrito[id]['stock'] -= Procesador.stock
+        if self.Carrito[id]["cantidad"] <=0: self.eliminar(Procesador)
+        self.guardar_Carrito()
+    def limpiar(self):
+        self.session['Carrito']={}
+        self.session.modified = True
+

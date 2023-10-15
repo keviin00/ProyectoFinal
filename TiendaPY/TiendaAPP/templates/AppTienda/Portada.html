@@ -96,9 +96,7 @@
         <nav>
             <ul>
                 <li><a href="{% url 'Productos' %}">Productos</a></li>
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'Carrito' %}">Carrito</a></li>
-                {% endif %}
+
                 <li><a href="{% url 'Contacto' %}">Contacto</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'CerrarSesion' %}">Cerrar Sesion</a></li>

@@ -9,28 +9,30 @@
 
     <style>
         * {
-    box-sizing: border-box; 
-}
-       
+            box-sizing: border-box;
+        }
+
         body {
-    background-image: url('https://images6.alphacoders.com/133/1330647.jpeg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Fija el fondo en su posición original */
-    color: white;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
+            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            /* Fija el fondo en su posición original */
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
 
         header {
-            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg'); 
-    background-size: cover; /* Esto asegurará que la imagen cubra todo el fondo */
-    background-repeat: no-repeat;
+            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg');
+            background-size: cover;
+            /* Esto asegurará que la imagen cubra todo el fondo */
+            background-repeat: no-repeat;
             padding: 20px;
             text-align: center;
         }
@@ -55,7 +57,8 @@
         }
 
         main {
-            flex: 1; /* Para ocupar el espacio restante en la ventana */
+            flex: 1;
+            /* Para ocupar el espacio restante en la ventana */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -64,21 +67,24 @@
 
         /* Estilos para las secciones de productos */
         .seccion-plegada {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    margin-bottom: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-            color: white;/*  /* Color de texto blanco */
-}
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            margin-bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            /*  /* Color de texto blanco */
+        }
 
-.seccion-desplegada {
-    max-height: 6000px;
-    transition: max-height 0.5s ease-in;
-    margin-bottom: 10px;
-    background-color: rgba(0, 0, 0, 0.8);
-            color: white;/* Color de texto blanco */
-}
+        .seccion-desplegada {
+            max-height: 6000px;
+            transition: max-height 0.5s ease-in;
+            margin-bottom: 10px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            /* Color de texto blanco */
+        }
+
         /* Estilos para los botones de toggle */
         .toggle-button {
             background-color: #2E0854;
@@ -90,24 +96,29 @@
             margin-bottom: 10px;
             transition: background-color 0.3s ease;
         }
+
         .producto {
-    margin-bottom: 10px;
-}
+            margin-bottom: 10px;
+        }
+
         .toggle-button:hover {
             background-color: #4B0082;
         }
+
         footer {
-            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg'); 
-    background-size: cover; /* Esto asegurará que la imagen cubra todo el fondo */
-    background-repeat: no-repeat;
-    padding: 20px;
-    text-align: center;
-    color: white; /* Color de texto blanco */
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    
-}
+            background-image: url('https://images6.alphacoders.com/133/1330647.jpeg');
+            background-size: cover;
+            /* Esto asegurará que la imagen cubra todo el fondo */
+            background-repeat: no-repeat;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            /* Color de texto blanco */
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+
+        }
     </style>
 </head>
 
@@ -116,9 +127,7 @@
         <nav>
             <ul>
                 <li><a href="{% url 'Portada' %}">Inicio</a></li>
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'Carrito' %}">Carrito</a></li>
-                {% endif %}
+
                 <li><a href="{% url 'Contacto' %}">Contacto</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'CerrarSesion' %}">Cerrar Sesion</a></li>
@@ -135,23 +144,21 @@
     <main>
 
         <!-- Categoría: Procesadores -->
-        <button class="toggle-button" onclick="toggleSection('procesadores')">Mostrar/Esconder Procesadores</button>
-        <div id="procesadores" class="seccion-plegada">
+        <button class="toggle-button" onclick="toggleSection('procesador')">Mostrar/Esconder Procesadores</button>
+        <div id="procesador" class="seccion-plegada">
             {% for procesador in procesadores %}
-    <div class="producto">
-        <h4>{{ procesador.modelo }}</h4>
-        <p>Marca: {{ procesador.marca }}</p>
-        <p>Descripción: {{ procesador.descripcion }}</p>
-        <p>Precio: ${{ procesador.precio }}</p>
-        <p>Stock: {{ procesador.stock }}</p>
-        <form action="{% url 'agregar_al_carrito' 'procesador' procesador.id %}" method="post">
-            {% csrf_token %}
-            <button type="submit">Agregar al Carrito</button>
-        </form>
-    </div>
-    {% empty %}
-    <p>No hay procesadores disponibles.</p>
-    {% endfor %}
+            <div class="producto">
+                <h3>Marca: {{ procesador.marca }}</h3>
+                <p>Descripcion: {{ procesador.descripcion }}</p>
+                <p>Precio: ${{ procesador.precio }}</p>
+                <p>Modelo: {{ procesador.modelo }}</p>
+                <p>Stock: {{ procesador.stock }}</p>
+                <li><a href="{% url 'add' procesador.id %}" class="btn btn-primary">Agregar al carrito</a></li>
+            </div>
+
+            {% empty %}
+            <p>No hay memorias disponibles.</p>
+            {% endfor %}
         </div>
 
         <!-- Categoría: Memorias -->
@@ -245,7 +252,7 @@
             section.classList.toggle('seccion-plegada');
             section.classList.toggle('seccion-desplegada');
         }
-     
+
     </script>
 </body>
 

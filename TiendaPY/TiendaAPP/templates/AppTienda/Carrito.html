@@ -112,59 +112,36 @@ body {
                 <thead>
                     <tr>
                         <th>Producto</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
                         <th>Cantidad</th>
-                        <th>Precio Unitario</th>
-                        <th>Precio Total</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for Procesador in carrito.Procesador.all %}
+                    {% if request.session.carrito.items %}
+                    {% for key, value in request.session.carrito.items %}
                     <tr>
-                        <td>{{ Procesador.modelo }}</td>
-                        <td>${{ Procesador.precio }}</td>
+                        <td>{{ key }}</td> <!-- Aquí debes mostrar el identificador o nombre del producto -->
+                        <td>{{ value.nombre }}</td>
+                        <td>{{ value.precio }}</td>
+                        <td>
+                            {{ value.cantidad }}
+                            <a href="{% url 'add' value.procesador.id %}">+</a>
+                            <a href="{% url 'sub' value.procesador.id %}>-</a>
+                        </td>
                     </tr>
                     {% endfor %}
-                    {% for Memoria in carrito.Memoria.all %}
-                    <tr>
-                        <td>{{ Memoria.modelo }}</td>
-                        <td>${{ Memoria.precio }}</td>
-                    </tr>
-                    {% endfor %}
-                    {% for Fuente in carrito.Fuente.all %}
-                    <tr>
-                        <td>{{ Fuente.modelo }}</td>
-                        <td>${{ Fuente.precio }}</td>
-                    </tr>
-                    {% endfor %}
-                    {% for Motherboard in carrito.Motherboard.all %}
-                    <tr>
-                        <td>{{ Motherboard.modelo }}</td>
-                        <td>${{ Motherboard.precio }}</td>
-                    </tr>
-                    {% endfor %}
-                    {% for Disco in carrito.Disco.all %}
-                    <tr>
-                        <td>{{ Disco.modelo }}</td>
-                        <td>${{ Disco.precio }}</td>
-                    </tr>
-                    {% endfor %}
-                    {% for Periferico in carrito.Periferico.all %}
-                    <tr>
-                        <td>{{ Periferico.modelo }}</td>
-                        <td>${{ Periferico.precio }}</td>
-                    </tr>
-                    {% endfor %}
-
-                </tbody>
-            </table>
-            
-            <!-- Resumen del Carrito -->
-            <div id="resumen">
-                <p>Total de Productos: {{ carrito.procesadores.count }} procesadores, {{ carrito.memorias.count }} memorias, etc.</p>
-                <p>Precio Final: ${{ total }}</p>
-            </div>
-        </section>
-    </main>
+                    </tbody>
+                </table>
+                <h2>Total:</h2>
+                <h2>$ {{ total_carrito }}</h2>
+                {% else %}
+                <tr>
+                    <td colspan="4">Sin productos en el carrito</td>
+                </tr>
+                {% endif %}
+            </section>
+        </main>
     
     <footer>
         <p>&copy; 2023 Tienda de Componentes de PC</p>
